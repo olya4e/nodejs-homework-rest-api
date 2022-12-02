@@ -8,4 +8,5 @@ function controllerWrapper(controller) {
   };
   return fn;
 }
+
 module.exports = controllerWrapper;
