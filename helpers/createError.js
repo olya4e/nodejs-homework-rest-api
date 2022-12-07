@@ -10,6 +10,7 @@ function createError({ status, message = message[status] }) {
   error.status = status;
   return error;
 }
+
 module.exports = {
   createError,
 };
