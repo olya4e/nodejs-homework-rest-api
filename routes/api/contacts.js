@@ -19,7 +19,7 @@ router.get(
 
 router.post(
   "/",
-
+  middlewares.authenticate,
   middlewares.validateBody(schema.addContactSchema),
   controllerWrapper(controllers.addContact)
 );
