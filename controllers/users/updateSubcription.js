@@ -1,18 +1,18 @@
-const Contact = require("../../models/contacts");
+const User = require("../../models/users");
 
 const { createError } = require("../../helpers/createError");
 
-async function updateFavorite(req, res, next) {
+async function updateSubcription(req, res, next) {
   if (Object.keys(req.body).length === 0) {
     throw createError({ status: 400, message: "missing field favorite" });
   }
-  const { id } = req.params;
-  const { _id } = req.user;
-  const { favorite } = req.body;
 
-  const result = await Contact.findOneAndUpdate(
-    { _id: id, owner: _id },
-    { favorite },
+  const { subscription } = req.body;
+  const { _id } = req.user;
+
+  const result = await User.findByIdAndUpdate(
+    _id,
+    { subscription },
     { new: true }
   );
   if (!result) {
@@ -21,4 +21,4 @@ async function updateFavorite(req, res, next) {
   res.status(200).json(result);
 }
 
-module.exports = updateFavorite;
+module.exports = updateSubcription;

@@ -11,4 +11,4 @@ function validateBody(schema) {
   return fn;
 }
 
-module.exports = { validateBody };
+module.exports = validateBody;
