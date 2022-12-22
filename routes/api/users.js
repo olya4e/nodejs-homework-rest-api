@@ -38,4 +38,11 @@ router.patch(
   controllerWrapper(controllers.updateSubcription)
 );
 
+router.patch(
+  "/avatars",
+  middlewares.authenticate,
+  middlewares.upload.single("avatar"),
+  controllerWrapper(controllers.updateAvatar)
+);
+
 module.exports = router;
