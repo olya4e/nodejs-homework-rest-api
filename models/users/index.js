@@ -1,3 +1,4 @@
+const { boolean } = require("joi");
 const { Schema, model } = require("mongoose");
 
 const emailRegexp = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
@@ -25,6 +26,14 @@ const userSchema = new Schema(
     },
     avatarURL: {
       type: String,
+    },
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: {
+      type: String,
+      required: [true, "Verification token is required"],
     },
   },
   {

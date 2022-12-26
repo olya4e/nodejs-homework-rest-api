@@ -12,6 +12,12 @@ async function loginUser(req, res) {
   if (!user) {
     throw createError({ status: 401, message: "Email or password wrong" });
   }
+  if (!user.verify) {
+    throw createError({
+      status: 401,
+      message: "User is not verified, please verify your email",
+    });
+  }
 
   const passwordcompare = await bcrypt.compare(password, user.password);
 

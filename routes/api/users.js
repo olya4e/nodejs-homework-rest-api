@@ -44,5 +44,12 @@ router.patch(
   middlewares.upload.single("avatar"),
   controllerWrapper(controllers.updateAvatar)
 );
+router.get("/verify/:verificationToken", controllerWrapper(controllers.verify));
+
+router.post(
+  "/verify",
+  middlewares.validateBody(schema.resendVerificationEmail),
+  controllerWrapper(controllers.resendVerificationEmail)
+);
 
 module.exports = router;
